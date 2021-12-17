@@ -22,31 +22,30 @@ class Backpack
     function openBag()
     {
         $this->open = true;
-        print_r("bag has been opened!");
+        print_r("Bag has been opened! ");
     }
     function closeBag()
     {
         $this->open = false;
-        print_r("bag has been closed!");
+        print_r("Bag has been closed! ");
     }
     function putin($item)
     {
         if ($this->open == false) {
-            print_r("Sir you can't put anything into a closed bag");
+            print_r("Sir you can't put anything into a closed bag. ");
         } else {
             array_push($this->items, $item);
-            print_r($item . " has been added to your bag");
+            print_r($item . " has been added to your bag. ");
         }
     }
     function takeout($item)
     {
         if ($this->open == false) {
-            print_r("Sir you can't take anything out of a closed bag");
+            print_r("Sir you can't take anything out of a closed bag. ");
         } else {
             if (in_array($item, $this->items)) {
-                $bag = $this->items;
-                unset($bag($item));
-                print_r($item . " has been removed from your bag");
+                $this->items = array_diff($this->items, array($item));
+                print_r($item . " has been removed from your bag. ");
             }
         }
     }
@@ -72,3 +71,5 @@ $bagTwo->closeBag();
 $bagTwo->openBag();
 $bagTwo->takeout("Jacket");
 $bagTwo->closeBag();
+
+?>
